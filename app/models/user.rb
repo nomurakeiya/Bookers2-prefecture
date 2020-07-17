@@ -21,4 +21,11 @@ class User < ApplicationRecord
     self.prefecture_code = JpPrefecture::Prefecture.find(name: prefecture_name).code
   end
 
+  # def address
+  #   "%s %s"%([self.address_city,self.address_street,self.address_building])
+  # end
+
+  geocoded_by :address_city
+  after_validation :geocode, if: :address_city_changed?
+
 end 

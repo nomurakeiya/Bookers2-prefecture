@@ -1,0 +1,31 @@
+<h2>googlemap</h2>
+<div id='map'></div>
+<p>現住所：<%= user.address_city %><%= user.address_street %><%= user.address_building %></p>
+<p>緯度：<%= user.latitude %></p>
+<p>経度：<%= user.longitude %></p>
+
+<style>
+#map {
+  height: 600px;
+  width: 600px;
+}
+</style>
+
+<script type="text/javascript">
+let map
+
+function initMap(){
+  geocoder = new google.maps.Geocoder()
+
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: <%= user.latitude %>, lng:<%= user.longitude %>},
+    zoom: 12,
+  });
+
+  marker = new google.maps.Marker({
+    position:  {lat: <%= user.latitude %>, lng: <%= user.longitude %>},
+    map: map
+  });
+}
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_MAP_API_KEY'] %>&callback=initMap" async defer></script>
