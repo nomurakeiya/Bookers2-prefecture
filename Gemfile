@@ -65,3 +65,5 @@ gem 'devise', github: 'koic/devise', branch: 'fix_syntax_error_for_ruby_2_5_0_pr
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+gem 'jp_prefecture'
+# gem 'jquery-turbolinks'
